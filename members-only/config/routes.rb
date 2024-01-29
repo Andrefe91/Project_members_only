@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   get "/posts/new", to: "posts#new"
   get "/posts/:id", to: "posts#show"
 
-  resource :users
-  resource :posts
+  resource :users do
+    resource :posts
+  end
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

@@ -13,7 +13,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(valid_post_params)
+    current_user = User.find(1)
+    @post = current_user.posts.build(valid_post_params) #This is creating a post by means of an association with the user
 
     if @post.save
       redirect_to @post
@@ -24,6 +25,6 @@ class PostsController < ApplicationController
 
   private
     def valid_post_params
-      params.require(:post).permit(:title, :body, :user_id => 1)
+      params.require(:post).permit(:title, :body)
     end
 end
