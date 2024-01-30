@@ -11,12 +11,13 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
+    end
   end
 
 
   private
 
   def valid_user_parameters
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email)
   end
 end

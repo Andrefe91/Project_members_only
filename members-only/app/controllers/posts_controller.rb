@@ -23,11 +23,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = 
+  end
+
   private
     def set_user
       @user = User.find(1)
     end
-    
+
     def valid_post_params
       params.require(:post).permit(:title, :body)
     end

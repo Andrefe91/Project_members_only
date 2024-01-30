@@ -1,0 +1,25 @@
+<h2>User registration</h2>
+
+<%= @user.errors.full_messages %>
+
+
+<%= form_with model: @user do |form| %>
+    <div>
+        <%= form.label :username %>
+        <%= form.text_field :username %>
+    </div>
+
+    <div>
+        <%= form.label :email %>
+        <%= form.text_area :email %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+
+    <div>
+        <%= link_to "Back", root_path %>
+    </div>
+
+<% end %>
