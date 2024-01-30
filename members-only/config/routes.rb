@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   get "/posts/new", to: "posts#new"
   get "/posts/:id", to: "posts#show"
 
-  resource :users do
-    resource :posts
+  resources :users do
+    resources :posts, shallow: true
   end
+
+  # resources :posts, only: [:show, :index]
 
   # Defines the root path route ("/")
   # root "posts#index"
