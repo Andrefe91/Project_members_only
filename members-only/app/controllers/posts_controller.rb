@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user
 
   def index
     @posts = Post.all
@@ -24,7 +24,24 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = 
+    @post = @user.posts.find(params[:id])
+  end
+
+  def update
+    @post = @user.posts.find(params[:id])
+
+    if @post.update(valid_post_params)
+      redirect_to @post
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @post = @user.posts.find(params[:id])
+    @post.destroy
+
+    redirect_to root_path, status: :see_other
   end
 
   private

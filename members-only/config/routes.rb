@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   get "/posts/:id", to: "posts#show"
 
   resources :users do
-    resources :posts, shallow: true
+    resources :posts
   end
+
+  resources :posts
 
   # resources :posts, only: [:show, :index]
 

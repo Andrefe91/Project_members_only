@@ -4,4 +4,14 @@
 
 <h3>Post made by: <%= User.find(@post.user_id).username %></h3>
 
-<%= link_to "Back", root_path %>
+<%= link_to "Edit", edit_post_path %>
+
+
+<%= link_to "Delete Post", post_path, data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?, this action can't be undone"
+                            }%>
+
+<div>
+    <%= link_to "Back", root_path %>
+</div>
